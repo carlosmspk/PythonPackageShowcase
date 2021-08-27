@@ -5,7 +5,7 @@ This also uses opencv-python:
     -pip install opencv-python
 """
 
-import mediapipe as mp
+from mediapipe.python.solutions import hands, drawing_utils
 import cv2
 
 PARAMETERS = {
@@ -17,8 +17,8 @@ PARAMETERS = {
 
 capture = cv2.VideoCapture(0)
 
-mpHands = mp.solutions.hands
-mpDraw = mp.solutions.drawing_utils
+mpHands = hands
+mpDraw = drawing_utils
 hands = mpHands.Hands(PARAMETERS)
 
 
@@ -26,6 +26,7 @@ while True:
     ok, img = capture.read()
 
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    # If you're running Pylance, it's normal that the lint won't recognize the landmarks. Pylance doesn't like NamedTuples coming from other packages :(
     results = hands.process(imgRGB).multi_hand_landmarks
 
     if results:
