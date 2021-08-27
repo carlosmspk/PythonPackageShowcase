@@ -1,4 +1,6 @@
 """
+pip install bibtexparser
+
 Picks a .bib file and strips the fields in FIELDS_TO_REMOVE.
 If DOT_BIB_DIR_INPUT points to an invalid file, a file with DOT_BIB_DIR_DEFAULT is created with default bib content and gets inputted instead.
 Either way, result gets saved into DOT_BIB_DIR_OUTPUT.
